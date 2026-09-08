@@ -300,6 +300,7 @@ Draggable, resizable panel (`indicators-popup.js`) with a badge on its toggle bu
 | Volume In USD | Per-venue data toggles (Hyperliquid / Binance Futures / OKX / Bybit), MA 1 (on/off, length, opacity), MA 2 (on/off, length, opacity), Show extreme line + mini label, Show current-vol line, Extreme % (of MA), Hide small volumes + threshold %, Abbreviate Y-axis |
 | OBV / ADL Combo | Per-venue data toggles, Show OBV line (color, width), Show EMA (length, color), Show RSI-of-OBV (length, color), Show top/bottom extremes, Highlight breakouts (top/bottom lookback) |
 | SMI (Squeeze Momentum) | BB Length, BB MultFactor, KC Length, KC MultFactor, Use TrueRange (KC), Higher timeframe toggle + interval, Crosshatch texture |
+| Hurst Exponent | Lookback (bars), Smoothing (Butterworth period), Display mode (Line / Histogram), Show raw (unsmoothed) overlay, Lower/Upper threshold, Line width, Colormap + intensity (fractal-dimension based trend/mean-reversion oscillator; fixed 4-zone strong-trend/weak-trend/weak-revert/strong-revert palette by default, or any heatmap colormap) |
 | *EMA / Volume Opacity* (shared) | EMA 20/50/200 opacity, Volume opacity, Volume display mode (Overlay / Window) |
 
 **Moving Averages & Bands**
@@ -349,6 +350,16 @@ Draggable, resizable panel (`indicators-popup.js`) with a badge on its toggle bu
 **Settings Templates** — Save and load full indicator configurations (every setting above, per indicator, bundled into a named template)
 
 **Drawing tools** — Full drawing mode with persistent drawing history
+
+| Group | Tools |
+|---|---|
+| Lines & Levels | Trendline, Ray, Horizontal Line, Vertical Line, Parallel Channel, Curve, Fibonacci Retracement |
+| Shapes & Markup | Rectangle, Circle, Arrow, Brush (Freehand), Long Position, Short Position (both with linked profit/loss zones, entry line, R:R ratio, labels), Text, Stickers |
+| Measure | Price Range, Date Range, Date and Price Range |
+| Volume | Fixed Range Volume Profile, Anchored VWAP (optional σ bands ×3, price label) |
+| Gann | Gann Fan, Gann Box, Gann Grid, Gann Levels |
+
+Each drawing has per-instance settings (color, opacity, thickness, and tool-specific extras like fill or band options) editable after placement.
 
 ---
 
