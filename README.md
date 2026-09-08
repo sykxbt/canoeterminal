@@ -380,6 +380,7 @@ Draggable, resizable panel (`indicators-popup.js`) with a badge on its toggle bu
 | Measure | Price Range, Date Range, Date and Price Range |
 | Volume | Fixed Range Volume Profile, Anchored VWAP (optional σ bands ×3, price label) |
 | Gann | Gann Fan, Gann Box, Gann Grid, Gann Levels |
+| Patterns | Bars Pattern — drag-select a range of candles, then reposition/rescale the captured OHLC pattern anywhere on the chart (color, opacity, body width, invert vertically) |
 
 Each drawing has per-instance settings (color, opacity, thickness, and tool-specific extras like fill or band options) editable after placement.
 
