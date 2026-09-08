@@ -285,15 +285,20 @@ A **Reset** button at the bottom restores all of the above to defaults.
 
 #### Indicators popup
 
-Draggable, resizable panel (`indicators-popup.js`) with a badge on its toggle button showing the active indicator count (position/state persisted per session). Each indicator pill opens/closes its layer on the chart; the separate **⚙ Indicator Settings** popout (built in `main.js`, with a few indicators — Pattern Finder, HTF Candle, Liq Sweep — injecting their own section at runtime) holds the actual parameters, grouped into the same four categories as the picker:
+Draggable, resizable panel (`indicators-popup.js`) with a badge on its toggle button showing the active indicator count (position/state persisted per session). Each indicator pill opens/closes its layer on the chart; the separate **⚙ Indicator Settings** popout (built in `main.js`, with a few indicators — Pattern Finder, HTF Candle, Liq Sweep — injecting their own section at runtime) holds the actual parameters, grouped into the same six categories as the picker (the picker's own 4 groups, plus Candle Styles and Support/Resistance which only appear in the settings popout):
 
 **Volume & Oscillators**
 
 | Indicator | Settings |
 |---|---|
 | PVSRA | Lookback bars |
+| MMO Candles | Toggle only — colors candles by position within the Murrey Math price grid (lookback 100, 1/8 multiplier) |
+| MACD | Crosshatch texture |
+| RSI | Toggle only |
 | GodMode 3.1 | Channel length (n1), Average length (n2), Short length (n3), Aqua line opacity, Aqua area opacity |
 | LWRSI (Liquidity Weighted RSI) | Period, Smoothing EMA, Hyperliquid volume on/off, Binance Futures volume on/off |
+| MA Oscillator | Toggle only — TWAP minus SMA(close, 200), with histogram MA |
+| BB RSI Signal | MA Signal (on/off, type, length), BB Signal (on/off, type, length, StdDev), Divergence Signal, RSI Filter + length, Sell/Buy Above/Below thresholds, Reentry pause (bars) |
 | Leledc Exhaustion | Swing length, Bar count |
 | Volume Bubbles | Scale from (visible range / all bars), Bubble size, Threshold %, Fill alpha, Outline thickness, Bubble color, Colormap + intensity + opacity, Show labels, Show $ value, per-venue data toggles (Hyperliquid / Binance Futures / OKX / Bybit) |
 | Open Interest | Data source (Binance Futures / Bybit), Show EMA + length, Body opacity, Wick opacity |
@@ -307,6 +312,9 @@ Draggable, resizable panel (`indicators-popup.js`) with a badge on its toggle bu
 
 | Indicator | Settings |
 |---|---|
+| EMA 20 / EMA 50 / EMA 200 | Toggle only — opacity shared with the Volume & Oscillators "EMA / Volume Opacity" block |
+| MA Suite | Overall opacity, per-line color + opacity for each of 7 fixed SMA periods (12/26/30/50/100/200/365), each resettable to theme default |
+| Custom MA | Add/remove any number of EMAs, each with its own length, color, and opacity |
 | VWAP | Period (Daily / Weekly / Monthly), VWAP opacity, Bands toggle with 3 configurable bands (each: σ multiplier, on/off, fill opacity, line opacity), Price label |
 | Rainbow VWAP | Fixed day-of-week color scheme (Sun=purple … Sat=blue), no numeric params beyond the shared EMA/Volume Opacity block |
 | Rolling VWAP / RVWAP (daily/session) | Opacity, Line width, Line style, Weekly VWAP toggle + width + style, Price labels |
@@ -317,8 +325,6 @@ Draggable, resizable panel (`indicators-popup.js`) with a badge on its toggle bu
 | COG Double Channel | Length, Mult (σ), Offset, Opacity — linreg median with a STDEV channel and an ATR channel, plus squeeze markers where the ATR channel pokes outside the STDEV channel on both sides |
 | SMMA Cloud Suite | Fast band short/long length (default 9/19, trend-colored), Slow band short/long length (default 89/120, neutral gray), Overall opacity, Fast band opacity, Slow band opacity, Crosshatch texture |
 | OS Area (Fair Value Bands) | Overall opacity, Min run (bars), Feather toggle + amount, Up band (on/off, opacity, gradient start/end color, colormap), Down band (on/off, opacity, gradient start/end color, colormap), Threshold up (on/off, opacity), Threshold down (on/off, opacity) — gradient fill wash where price pierces the fair-value threshold band, saturating toward the outer deviation zone |
-| BB HTF | Lookback (bars), Min FVG overlap % of OB, x2+ mitigation threshold %, Timeframes (D/2D/3D/4D/5D/6D/W/2W, individually enabled), Show current TF only, Box color (x1–x4+), Overall opacity, Show labels, Show midline + color, Border color/opacity/width — breaker blocks (order block + FVG overlap, engulfed and not re-mitigated) detected across higher timeframes, drawn as boxes on the chart |
-| BB LTF | Same parameter set as BB HTF, scoped to lower timeframes (15M/30M/1H/2H/4H, max 4H) — mirrors BB HTF but fetches real intraday candle history independent of the chart's own interval |
 | VWMA | Period, Color, Opacity |
 | CM Guppy EMAs | Thickness (0.05–4×), Opacity — 6 fast (3–15) + 6 slow (30–60) EMAs, fixed bull/bear/mixed color coding |
 
@@ -326,9 +332,9 @@ Draggable, resizable panel (`indicators-popup.js`) with a badge on its toggle bu
 
 | Indicator | Settings |
 |---|---|
-| Supply/Demand Zones | Max zones per side, Fill opacity, Border opacity, Extend to right edge |
 | AlphaTrend | Multiplier (coeff), Common Period (AP), Source (Close/Open/High/Low/HL2/HLC3/OHLC4), Show signals, No-volume (RSI) mode, Line opacity, Fill opacity |
 | Minervini Trend Template | Color candles by score, Candle opacity, Show SMA 50/150/200, Show criteria table + table opacity, SMA 200 rising lookback, 52-week lookback (9-criterion Trend Template; Relative Performance criterion omitted — no standard crypto benchmark, so max score is 9/9) |
+| Stage Analysis | Toggle only — colors candles by weekly MA cycle stage: Stage 1 Accumulation (light green), Stage 2 Mark-Up (green), Stage 3 Distribution (orange), Stage 4 Mark-Down (red) |
 | Liquidity Sweep | Swing lookback, Min wick/body ratio, Level fade (bars), Show bull/bear sweeps, Show swept levels, Show labels, Label size, Overall opacity |
 | Stop Order Heatmap | Price window (±%), Bucket size (% of price), Min notional ($), Max bar width (% of chart), Bar opacity, Overall opacity, Colormap + intensity (live Hyperdash buy/sell stop clusters, refreshes every 30s) |
 | Liquidation Heatmap | Same parameter set as Stop Order Heatmap, sourced from Hyperdash's liquidation clusters (same data as the Hyperliquid Liq Map tab) |
@@ -346,6 +352,22 @@ Draggable, resizable panel (`indicators-popup.js`) with a badge on its toggle bu
 | Session VbP / Volume By Price | Per-venue data toggles (Hyperliquid / Binance Futures / OKX / Bybit), Session length (5m–8h, London, NY Open, etc.) |
 | HTF Candle Dynamics | HTF interval, Right offset (bars), Profile rows, Profile width, Show volume profile / developing POC / history table / open line / price line / high-low lines / high-low labels, History table position (draggable, position persisted), Overall opacity, Bullish/Bearish/Open/POC/Developing-POC colors (each resettable to theme default) |
 | Pattern Finder | Up to 4 zigzag scales (length/depth, individually enabled), Number of pivots (5/6), Error threshold %, Flat threshold %, Check bar ratio + limit, Avoid overlap, Single trendline color (on/off + picker), Max patterns shown, Show zigzag / pattern label / pivot labels, Line width + style, Opacity, Text scale + opacity |
+
+**Candle Styles**
+
+| Style | Settings |
+|---|---|
+| Raindrop Candles | Candles per drop (even ≥2), Price bins (4–60), Width fill, Neutral margin %, Body transparency %, Drops to keep (lookback), Smooth violin toggle, Box threshold % (box mode), High/low spine toggle, VWAP ticks toggle, Doji rays toggle |
+
+**Support / Resistance**
+
+| Indicator | Settings |
+|---|---|
+| Supply/Demand Zones | Max zones per side, Fill opacity, Border opacity, Extend to right edge |
+| Pivots | Toggle only — Pivot Points Standard: Traditional/Fibonacci/Woodie/Classic/DM/Camarilla pivots with configurable timeframe anchor |
+| BB HTF | Lookback (bars), Min FVG overlap % of OB, x2+ mitigation threshold %, Timeframes (D/2D/3D/4D/5D/6D/W/2W, individually enabled), Show current TF only, Box color (x1–x4+), Overall opacity, Show labels, Show midline + color, Border color/opacity/width — breaker blocks (order block + FVG overlap, engulfed and not re-mitigated) detected across higher timeframes, drawn as boxes on the chart |
+| BB LTF | Same parameter set as BB HTF, scoped to lower timeframes (15M/30M/1H/2H/4H, max 4H) — mirrors BB HTF but fetches real intraday candle history independent of the chart's own interval |
+| Key Levels | Toggle only — Daily/Weekly/Monthly/Quarterly/Yearly opens, previous-period highs/lows/mids, Monday range, and FX session ranges (port of SpacemanBTC Key Level) |
 
 **Settings Templates** — Save and load full indicator configurations (every setting above, per indicator, bundled into a named template)
 
