@@ -344,7 +344,7 @@ Draggable, resizable panel (`indicators-popup.js`) with a badge on its toggle bu
 | VPVR / Volume Profile | Rows (price levels), Value Area %, Width (% of chart), Opacity, POC line, VA lines, Price labels |
 | Session VbP / Volume By Price | Per-venue data toggles (Hyperliquid / Binance Futures / OKX / Bybit), Session length (5m–8h, London, NY Open, etc.) |
 | HTF Candle Dynamics | HTF interval, Right offset (bars), Profile rows, Profile width, Show volume profile / developing POC / history table / open line / price line / high-low lines / high-low labels, History table position (draggable, position persisted), Overall opacity, Bullish/Bearish/Open/POC/Developing-POC colors (each resettable to theme default) |
-| Pattern Finder (Trendscope) | Up to 4 zigzag scales (length/depth, individually enabled), Number of pivots (5/6), Error threshold %, Flat threshold %, Check bar ratio + limit, Avoid overlap, Single trendline color (on/off + picker), Max patterns shown, Show zigzag / pattern label / pivot labels, Line width + style, Opacity, Text scale + opacity — JS port of Auto Chart Patterns by Trendoscope® |
+| Pattern Finder | Up to 4 zigzag scales (length/depth, individually enabled), Number of pivots (5/6), Error threshold %, Flat threshold %, Check bar ratio + limit, Avoid overlap, Single trendline color (on/off + picker), Max patterns shown, Show zigzag / pattern label / pivot labels, Line width + style, Opacity, Text scale + opacity |
 
 **Settings Templates** — Save and load full indicator configurations (every setting above, per indicator, bundled into a named template)
 
