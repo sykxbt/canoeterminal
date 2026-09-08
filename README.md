@@ -454,6 +454,20 @@ Canvas candlestick chart of the underlying (Deribit perpetual, hourly bars, ~90 
 
 ---
 
+---
+
+### Funding
+> Hyperliquid-only carry-trade companion to Options — funding table + per-symbol funding-history chart.
+
+- **Top stat row** — BTC Funding (rate + annualized), Perps Tracked, Extremes (count currently ≥85th or ≤15th percentile of their own trailing 30D history)
+- **Funding table** — Search by symbol; sortable columns: Symbol · Rate (%/8h) · 8h Avg · 24h Avg · 7D Avg · Annualized · OI. Click a header to sort, click again to reverse.
+- **Regime flag per row** — NORMAL / ELEVATED (≥65th pct) / EXTREME (≥85th pct) / LOW (≤15th pct), based on trailing 30D percentile of that symbol's own funding history
+- **Funding history chart** (per selected symbol) — Funding Rate (%/8h) and Cumulative Funding Rate lines, with an optional 50%-opacity price candle overlay (toggle) and log/linear price-axis toggle
+  - **Range tabs** — 1h (~6D), 8h (~27D), 1D (~85D / ~3mo) — these are zoom levels into the same hourly-native series, not different bucket sizes, matching Hyperliquid's own funding-chart tabs
+- **Data source** — Hyperliquid only (`metaAndAssetCtxs` for current funding/mark/index/OI, `fundingHistory` for the per-symbol trailing series); perp + HIP-3 markets only, spot excluded
+
+---
+
 ### Screener
 > Cross-venue market screener merging Hyperliquid, Binance, OKX, and Bybit into one filterable, sortable table.
 
@@ -621,7 +635,7 @@ When you have a trade logged in the Journal with an **Open** status, you can loa
 - **Settings** — Theme editor, heatmap theme editor, chart preferences (log scale, etc.)
 - **Theme system** — Full CSS variable theme with presets; custom theme editor for every color token
 - **Background wallpaper** — Set an image, GIF, or video (MP4/WebM) as the app background from Settings → Background Wallpaper; drag-and-drop or click to browse. Stored locally in your browser (`bg-media.js`). Opacity slider controls how strongly it shows through the UI
-- **Sidebar ambient animation** — Decorative, theme-aware canvas animation in the empty sidenav spacer (`sidebar-animations.js`), purely cosmetic. Six selectable styles (Particles, Matrix, Scanline, Grid Pulse, Fireflies, Circuit) plus an Off option, configurable from Settings → Ambient Animation (style + opacity), switchable live without a reload
+- **Sidebar ambient animation** — Decorative, theme-aware canvas animation in the empty sidenav spacer (`sidebar-animations.js`), purely cosmetic. Nine selectable styles (Particles, Matrix, Scanline, Grid Pulse, Fireflies, Circuit, Ripples, Stars, Pulse Line) plus an Off option, configurable from Settings → Ambient Animation (style + opacity), switchable live without a reload
 - **Account tab wave** — The same module's CSS-driven wave hero background behind the Account tab's empty state. Four selectable styles (Ocean, Calm, Storm, Pulse), configurable from Settings → Account Wave (style + opacity + Slow/Normal/Fast speed)
 
 ---
